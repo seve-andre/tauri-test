@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import "./assets/styles/base.scss"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Apartment from "./pages/apartment/Apartment"
+import ChooseApartment from "./pages/choose/ChooseApartment"
+import ChooseHouse from "./pages/choose/ChooseHouse"
+import PricesTable from "./pages/prices/PricesTable"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ChooseHouse />} /> {/* first page to be shown */}
+          <Route path="/choose-apartment/:idHouse" element={<ChooseApartment />} />
+          <Route path="/apartment/:idHouse/:idApartment" element={<Apartment />} />
+          <Route path="/prices" element={<PricesTable />} />
+        </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
